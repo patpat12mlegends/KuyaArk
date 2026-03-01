@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Simple Web Page</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url("https://raw.githubusercontent.com/patpat12mlegends/KuyaArk/main/kuyaArk.jpg");
+            background-size: cover;          /* Makes image cover full screen */
+            background-position: center;     /* Center the image */
+            background-repeat: no-repeat;    /* Prevent repeating */
+            height: 100vh;                   /* Full screen height */
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+        }
+
+        .content {
+            padding-top: 20%;
+            background: rgba(0, 0, 0, 0.5);  /* Dark overlay */
+            height: 100vh;
+        }
+
+        h1 {
+            font-size: 50px;
+        }
+
+        p {
+            font-size: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            background-color: #ff6600;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #cc5200;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="content">
+        <h1>Welcome to My Website</h1>
+        <p style="font-size: 34px;">Hi! I'm Arkin :)</p>
+      <button onclick="openModal('https://raw.githubusercontent.com/patpat12mlegends/KuyaArk/main/ateAsh2.jpg','https://raw.githubusercontent.com/patpat12mlegends/KuyaArk/25e27247b5571834912552134901d4ee0a0071c1/STAY.mp3')">
+        Want to see my ate Ash? Click here.
+    </button>
+	<br><br>
+    <button onclick="openModal('https://raw.githubusercontent.com/patpat12mlegends/KuyaArk/main/ateAirish.jpg','https://raw.githubusercontent.com/patpat12mlegends/KuyaArk/bea1f2fac3e7d189e3124da87ad0041be1d04f06/Kill%20Bill%20-%20SZA.mp3')">
+        Want to see my ate Airish? Click here.
+    </button>
+
+    <br> 
+
+<!-- Audio Player -->
+<audio id="myMusic"></audio>
+
+<!-- Modal -->
+<div id="imageModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img id="modalImage" width="350">
+    </div>
+</div>
+
+<style>
+.modal {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.7);
+}
+
+.modal.show {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    cursor: pointer;
+}
+</style>
+
+<script>
+function openModal(imageSrc, musicSrc) {
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImage");
+    const music = document.getElementById("myMusic");
+
+    // Stop any current music
+    music.pause();
+    music.currentTime = 0;
+
+    // Set new image
+    modalImg.src = imageSrc;
+
+    // Set new music
+    music.src = musicSrc;
+    music.play();
+
+    // Show modal
+    modal.classList.add("show");
+}
+
+function closeModal() {
+    const modal = document.getElementById("imageModal");
+    const music = document.getElementById("myMusic");
+
+    modal.classList.remove("show");
+
+    // Stop music when closing
+    music.pause();
+    music.currentTime = 0;
+}
+</script>
+</body>
+</html>
